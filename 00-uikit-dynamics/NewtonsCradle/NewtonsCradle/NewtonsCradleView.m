@@ -11,6 +11,8 @@
 
 @implementation NewtonsCradleView {
     NSArray *_ballBearings;
+    NSArray *_ballAnchors;
+    
     UIDynamicAnimator *_animator;
     UIPushBehavior *_userDragBehavior;
     
@@ -22,7 +24,8 @@
     
     if (self) {
         numberBalls = 5;
-        [self createBallBearings];
+        
+        [self createBallBearingsAndAnchors];
         [self applyDynamicBehavior];
         
         // kick the cradle off with a push to start
@@ -36,6 +39,7 @@
 
 - (void)createBallBearings {
     NSMutableArray *ballBearings = [NSMutableArray array];
+    //估算球的大小，占屏1/3，处于屏幕中间方便用户玩
     CGFloat ballSize = CGRectGetWidth(self.bounds) / (3.0 * (numberBalls - 1));
     
     for (NSUInteger i=0; i<numberBalls; i++) {
@@ -50,11 +54,55 @@
         UIPanGestureRecognizer *gesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleBallBearingPan:)];
         [ballBear addGestureRecognizer:gesture];
         
+        //为球添加Oberser，当球的center属性发生改变时，会通知UIView的方法，刷新view，这儿主要是为了在球移动的时候保持锚点和球之间的连接线。
+        // [ballBear addObserver:self forKeyPath:@"center" options:NSKeyValueObservingOptionNew context:Nil];
+        
         [ballBearings addObject:ballBear];
         [self addSubview:ballBear];
     }
     
     _ballBearings = [NSArray arrayWithArray:ballBearings];
+}
+
+// create balls and anchors
+- (void)createBallBearingsAndAnchors {
+    NSMutableArray *ballBearings = [NSMutableArray array];
+    NSMutableArray *ballAnchors = [NSMutableArray array];
+    
+    //估算球的大小，占屏1/3，处于屏幕中间方便用户玩
+    CGFloat ballSize = CGRectGetWidth(self.bounds) / (3.0 * (numberBalls - 1));
+    
+    for (NSUInteger i=0; i<numberBalls; i++) {
+        // 避免球离得太近
+        BallBearingView *ballBear = [[BallBearingView alloc] initWithFrame:CGRectMake(0, 0, ballSize - 1, ballSize - 1)];
+        
+        CGFloat x = CGRectGetWidth(self.bounds) / 3.0 + i * ballSize;
+        CGFloat y = CGRectGetWidth(self.bounds) / 2.0;
+        ballBear.center = CGPointMake(x, y);
+        
+        // 添加gesture recogniser
+        UIPanGestureRecognizer *gesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleBallBearingPan:)];
+        [ballBear addGestureRecognizer:gesture];
+        
+        //为球添加Oberser，当球的center属性发生改变时，会通知UIView的方法，刷新view，这儿主要是为了在球移动的时候保持锚点和球之间的连接线。
+        [ballBear addObserver:self forKeyPath:@"center" options:NSKeyValueObservingOptionNew context:Nil];
+        
+        [ballBearings addObject:ballBear];
+        [self addSubview:ballBear];
+        
+        // 锚点
+        CGPoint anchor = ballBear.center;
+        anchor.y -= CGRectGetHeight(self.bounds) / 4.0;
+        UIView *blueBox = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+        blueBox.backgroundColor = [UIColor blueColor];
+        blueBox.center = anchor;
+        
+        [ballAnchors addObject:blueBox];
+        [self addSubview:blueBox];
+    }
+    
+    _ballBearings = [NSArray arrayWithArray:ballBearings];
+    _ballAnchors = [NSArray arrayWithArray:ballAnchors];
 }
 
 #pragma mark - UIGestureRecgnizer target method
@@ -79,58 +127,102 @@
 
 #pragma mark - UIDynamic utility methods
 - (void)applyDynamicBehavior {
+    // 添加UIDynamic的动力行为，同时把多个动力行为组合为一个复杂的动力行为。
     UIDynamicBehavior *behavior = [[UIDynamicBehavior alloc] init];
     
-    for (id<UIDynamicItem> ballBearing in _ballBearings) {
-        UIDynamicBehavior *attachmentBehavior = [self createAttachmentBehaviorForBallBearing:ballBearing];
-        [behavior addChildBehavior:attachmentBehavior];
-    }
+    [self applyAttachmentBehaviorForBalls:behavior];
     
-    // apply gravity to the ball bearings
     [behavior addChildBehavior:[self createGravityBehaviorForObjects:_ballBearings]];
-    
-    // apply collision behavior to ball bearings
     [behavior addChildBehavior:[self createCollisionBehaviorForObjects:_ballBearings]];
-    
-    // apply dynamic item behavior
-    UIDynamicItemBehavior *itemBehavior = [[UIDynamicItemBehavior alloc] initWithItems:_ballBearings];
-    itemBehavior.elasticity = 1.0;
-    itemBehavior.allowsRotation = NO;
-    itemBehavior.resistance = 2.f;
-    [behavior addChildBehavior:itemBehavior];
+    [behavior addChildBehavior:[self createItemBehaviorForObjects:_ballBearings]];
     
     _animator = [[UIDynamicAnimator alloc] initWithReferenceView:self];
     [_animator addBehavior:behavior];
 }
 
+// 为每个球到对应的锚点添加一个AttachmentBehavior，并作为一个子Behavior添加到一个Behavior中
+- (void)applyAttachmentBehaviorForBalls:(UIDynamicBehavior *)behavior {
+    for (NSUInteger i=0; i<numberBalls; i++) {
+        UIDynamicBehavior *attachmentBehavior = [self createAttachmentBehaviorForBallBearing:[_ballBearings objectAtIndex:i]
+                                                                                    toAnchor:[_ballAnchors objectAtIndex:i]];
+        [behavior addChildBehavior:attachmentBehavior];
+    }
+}
 
 - (UIDynamicBehavior *)createAttachmentBehaviorForBallBearing:(id<UIDynamicItem>)ballBearing {
     CGPoint anchor = ballBearing.center;
     anchor.y -= CGRectGetHeight(self.bounds) / 4.0;
     
+    // 锚点
     UIView *blueBox = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
     blueBox.backgroundColor = [UIColor blueColor];
     blueBox.center = anchor;
     [self addSubview:blueBox];
     
+    // 把球attach到锚点上
     UIAttachmentBehavior *behavior = [[UIAttachmentBehavior alloc] initWithItem:ballBearing attachedToAnchor:anchor];
     
     return behavior;
 }
 
 
-// create gravity behavior
+- (UIDynamicBehavior *)createAttachmentBehaviorForBallBearing:(id<UIDynamicItem>)ballBearing toAnchor:(id<UIDynamicItem>)anchor {
+    // 把球attach到锚点上
+    UIAttachmentBehavior *behavior = [[UIAttachmentBehavior alloc] initWithItem:ballBearing attachedToAnchor:[anchor center]];
+    
+    return behavior;
+}
+
+// 为所有的球添加一个重力行为
 - (UIDynamicBehavior *)createGravityBehaviorForObjects:(NSArray *)objects {
     UIGravityBehavior *gravity = [[UIGravityBehavior alloc] initWithItems:objects];
     gravity.magnitude = 10;
     return gravity;
 }
 
-
-// create collision behavior
+// 为所有的球添加一个碰撞行为
 - (UIDynamicBehavior *)createCollisionBehaviorForObjects:(NSArray *)objects {
     return [[UICollisionBehavior alloc] initWithItems:objects];
 }
 
+// 为所有的球的动力行为做一个公有配置，像空气阻力，摩擦力，弹性密度等
+- (UIDynamicBehavior *)createItemBehaviorForObjects:(NSArray *)objects {
+    UIDynamicItemBehavior *itemBehavior = [[UIDynamicItemBehavior alloc] initWithItems:objects];
+    itemBehavior.elasticity = 1.0;
+    itemBehavior.allowsRotation = NO;
+    itemBehavior.resistance = 2.f;
+    
+    return itemBehavior;
+}
 
+#pragma mark - Observer
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    //    Observer方法，当ball的center属性发生变化时，刷新整个view
+    [self setNeedsDisplay];
+}
+
+//覆盖父类的方法，主要是为了在锚点和球之间画一条线
+-(void)drawRect:(CGRect)rect
+{
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    for(id<UIDynamicItem> ballBearing in _ballBearings){
+        CGPoint anchor =[[_ballAnchors objectAtIndex:[_ballBearings indexOfObject:ballBearing]] center];
+        CGPoint ballCenter = [ballBearing center];
+        CGContextMoveToPoint(context, anchor.x, anchor.y);
+        CGContextAddLineToPoint(context, ballCenter.x, ballCenter.y);
+        CGContextSetLineWidth(context, 1.0f);
+        [[UIColor blackColor] setStroke];
+        CGContextDrawPath(context, kCGPathFillStroke);
+    }
+    [self setBackgroundColor:[UIColor whiteColor]];
+}
+
+//添加了Observer必须释放，不然会造成内存泄露。
+-(void)dealloc
+{
+    for (BallBearingView *ballBearing in _ballBearings) {
+        [ballBearing removeObserver:self forKeyPath:@"center"];
+    }
+}
 @end

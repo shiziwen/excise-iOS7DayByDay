@@ -14,8 +14,9 @@
     self = [super initWithFrame:frame];
     
     if (self) {
+        // init
         self.backgroundColor = [UIColor lightGrayColor];
-        self.layer.cornerRadius = 10;
+        self.layer.cornerRadius = MIN(CGRectGetHeight(frame), CGRectGetWidth(frame)) / 2.0;
         self.layer.borderColor = [UIColor grayColor].CGColor;
         self.layer.borderWidth = 2;
     }
