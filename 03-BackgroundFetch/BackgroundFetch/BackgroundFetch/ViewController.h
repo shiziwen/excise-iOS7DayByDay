@@ -10,6 +10,7 @@
 
 @interface ViewController : UIViewController
 
+- (NSUInteger)insertStatusObjectsForFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;
 
 @end
 

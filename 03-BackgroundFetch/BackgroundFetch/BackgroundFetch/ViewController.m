@@ -24,4 +24,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (NSUInteger)insertStatusObjectsForFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    NSUInteger numberCreated = 3;
+    NSLog(@"Background fetch completed - %lu new updates", (unsigned long)numberCreated);
+    UIBackgroundFetchResult result = UIBackgroundFetchResultNoData;
+    if(numberCreated > 0) {
+        result = UIBackgroundFetchResultNewData;
+    }
+    completionHandler(result);
+    return numberCreated;
+}
+
 @end
