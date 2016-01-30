@@ -35,10 +35,17 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x6N-rt-9K0">
                                 <rect key="frame" x="128" y="461" width="64" height="30"/>
                                 <state key="normal" title="Greet me"/>
+                                <connections>
+                                    <action selector="touchGreetButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eJk-O0-i2d"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="greetingLabel" destination="NWO-Bi-N34" id="vXa-NY-NLv"/>
+                        <outlet property="languagePicker" destination="SEM-m0-Cf9" id="CkE-t4-1OD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

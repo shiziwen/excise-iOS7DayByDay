@@ -13,6 +13,8 @@
 		0420C8751C5C11F000E23603 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0420C8731C5C11F000E23603 /* Main.storyboard */; };
 		0420C8771C5C11F000E23603 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0420C8761C5C11F000E23603 /* Assets.xcassets */; };
 		0420C87A1C5C11F000E23603 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0420C8781C5C11F000E23603 /* LaunchScreen.storyboard */; };
+		04361B1E1C5D3E68006C17D3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04361B1D1C5D3E68006C17D3 /* AVFoundation.framework */; };
+		04361B211C5D3FCE006C17D3 /* GreetingLanguage.m in Sources */ = {isa = PBXBuildFile; fileRef = 04361B201C5D3FCE006C17D3 /* GreetingLanguage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,9 @@
 		0420C8761C5C11F000E23603 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0420C8791C5C11F000E23603 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0420C87B1C5C11F000E23603 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04361B1D1C5D3E68006C17D3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		04361B1F1C5D3FCE006C17D3 /* GreetingLanguage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GreetingLanguage.h; sourceTree = "<group>"; };
+		04361B201C5D3FCE006C17D3 /* GreetingLanguage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GreetingLanguage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04361B1E1C5D3E68006C17D3 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +48,7 @@
 		0420C85E1C5C11F000E23603 = {
 			isa = PBXGroup;
 			children = (
+				04361B1D1C5D3E68006C17D3 /* AVFoundation.framework */,
 				0420C8691C5C11F000E23603 /* AVSpeechSynthesizer */,
 				0420C8681C5C11F000E23603 /* Products */,
 			);
@@ -67,6 +74,7 @@
 				0420C8781C5C11F000E23603 /* LaunchScreen.storyboard */,
 				0420C87B1C5C11F000E23603 /* Info.plist */,
 				0420C86A1C5C11F000E23603 /* Supporting Files */,
+				04361B221C5D4490006C17D3 /* Model */,
 			);
 			path = AVSpeechSynthesizer;
 			sourceTree = "<group>";
@@ -77,6 +85,15 @@
 				0420C86B1C5C11F000E23603 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		04361B221C5D4490006C17D3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				04361B201C5D3FCE006C17D3 /* GreetingLanguage.m */,
+				04361B1F1C5D3FCE006C17D3 /* GreetingLanguage.h */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +168,7 @@
 			files = (
 				0420C8721C5C11F000E23603 /* ViewController.m in Sources */,
 				0420C86F1C5C11F000E23603 /* AppDelegate.m in Sources */,
+				04361B211C5D3FCE006C17D3 /* GreetingLanguage.m in Sources */,
 				0420C86C1C5C11F000E23603 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,6 +316,7 @@
 				0420C8801C5C11F000E23603 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
