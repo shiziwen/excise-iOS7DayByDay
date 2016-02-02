@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04332DD21C60C44300C0923B /* CollectionViewSampleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04332DD11C60C44300C0923B /* CollectionViewSampleCell.m */; };
+		04332DD51C60E42500C0923B /* SpringyCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04332DD41C60E42500C0923B /* SpringyCarousel.m */; };
 		043567AA1C5E67B100AA8891 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 043567A91C5E67B100AA8891 /* main.m */; };
 		043567AD1C5E67B100AA8891 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 043567AC1C5E67B100AA8891 /* AppDelegate.m */; };
 		043567B01C5E67B100AA8891 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043567AF1C5E67B100AA8891 /* ViewController.m */; };
@@ -16,6 +18,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04332DD01C60C44300C0923B /* CollectionViewSampleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewSampleCell.h; sourceTree = "<group>"; };
+		04332DD11C60C44300C0923B /* CollectionViewSampleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewSampleCell.m; sourceTree = "<group>"; };
+		04332DD31C60E42500C0923B /* SpringyCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringyCarousel.h; sourceTree = "<group>"; };
+		04332DD41C60E42500C0923B /* SpringyCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringyCarousel.m; sourceTree = "<group>"; };
 		043567A51C5E67B100AA8891 /* SpringyCarousel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpringyCarousel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		043567A91C5E67B100AA8891 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		043567AB1C5E67B100AA8891 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -67,6 +73,10 @@
 				043567B61C5E67B100AA8891 /* LaunchScreen.storyboard */,
 				043567B91C5E67B100AA8891 /* Info.plist */,
 				043567A81C5E67B100AA8891 /* Supporting Files */,
+				04332DD01C60C44300C0923B /* CollectionViewSampleCell.h */,
+				04332DD11C60C44300C0923B /* CollectionViewSampleCell.m */,
+				04332DD31C60E42500C0923B /* SpringyCarousel.h */,
+				04332DD41C60E42500C0923B /* SpringyCarousel.m */,
 			);
 			path = SpringyCarousel;
 			sourceTree = "<group>";
@@ -152,6 +162,8 @@
 				043567B01C5E67B100AA8891 /* ViewController.m in Sources */,
 				043567AD1C5E67B100AA8891 /* AppDelegate.m in Sources */,
 				043567AA1C5E67B100AA8891 /* main.m in Sources */,
+				04332DD21C60C44300C0923B /* CollectionViewSampleCell.m in Sources */,
+				04332DD51C60E42500C0923B /* SpringyCarousel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +310,7 @@
 				043567BE1C5E67B100AA8891 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
