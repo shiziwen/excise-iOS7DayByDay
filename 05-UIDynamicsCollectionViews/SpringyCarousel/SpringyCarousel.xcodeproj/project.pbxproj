@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		042E87C31C624D5C00A1CB9A /* ItemBehaviorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 042E87C21C624D5C00A1CB9A /* ItemBehaviorManager.m */; };
+		042E87C51C624DC000A1CB9A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 042E87C41C624DC000A1CB9A /* UIKit.framework */; };
+		042E87C71C624DFE00A1CB9A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 042E87C61C624DFE00A1CB9A /* Foundation.framework */; };
+		042E87C91C624E4400A1CB9A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 042E87C81C624E4400A1CB9A /* CoreGraphics.framework */; };
 		04332DD21C60C44300C0923B /* CollectionViewSampleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04332DD11C60C44300C0923B /* CollectionViewSampleCell.m */; };
 		04332DD51C60E42500C0923B /* SpringyCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04332DD41C60E42500C0923B /* SpringyCarousel.m */; };
 		043567AA1C5E67B100AA8891 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 043567A91C5E67B100AA8891 /* main.m */; };
@@ -18,6 +22,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		042E87C11C624D5C00A1CB9A /* ItemBehaviorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemBehaviorManager.h; sourceTree = "<group>"; };
+		042E87C21C624D5C00A1CB9A /* ItemBehaviorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemBehaviorManager.m; sourceTree = "<group>"; };
+		042E87C41C624DC000A1CB9A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		042E87C61C624DFE00A1CB9A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		042E87C81C624E4400A1CB9A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		04332DD01C60C44300C0923B /* CollectionViewSampleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewSampleCell.h; sourceTree = "<group>"; };
 		04332DD11C60C44300C0923B /* CollectionViewSampleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewSampleCell.m; sourceTree = "<group>"; };
 		04332DD31C60E42500C0923B /* SpringyCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringyCarousel.h; sourceTree = "<group>"; };
@@ -39,6 +48,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				042E87C91C624E4400A1CB9A /* CoreGraphics.framework in Frameworks */,
+				042E87C71C624DFE00A1CB9A /* Foundation.framework in Frameworks */,
+				042E87C51C624DC000A1CB9A /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +60,9 @@
 		0435679C1C5E67B100AA8891 = {
 			isa = PBXGroup;
 			children = (
+				042E87C81C624E4400A1CB9A /* CoreGraphics.framework */,
+				042E87C61C624DFE00A1CB9A /* Foundation.framework */,
+				042E87C41C624DC000A1CB9A /* UIKit.framework */,
 				043567A71C5E67B100AA8891 /* SpringyCarousel */,
 				043567A61C5E67B100AA8891 /* Products */,
 			);
@@ -77,6 +92,8 @@
 				04332DD11C60C44300C0923B /* CollectionViewSampleCell.m */,
 				04332DD31C60E42500C0923B /* SpringyCarousel.h */,
 				04332DD41C60E42500C0923B /* SpringyCarousel.m */,
+				042E87C11C624D5C00A1CB9A /* ItemBehaviorManager.h */,
+				042E87C21C624D5C00A1CB9A /* ItemBehaviorManager.m */,
 			);
 			path = SpringyCarousel;
 			sourceTree = "<group>";
@@ -163,6 +180,7 @@
 				043567AD1C5E67B100AA8891 /* AppDelegate.m in Sources */,
 				043567AA1C5E67B100AA8891 /* main.m in Sources */,
 				04332DD21C60C44300C0923B /* CollectionViewSampleCell.m in Sources */,
+				042E87C31C624D5C00A1CB9A /* ItemBehaviorManager.m in Sources */,
 				04332DD51C60E42500C0923B /* SpringyCarousel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
