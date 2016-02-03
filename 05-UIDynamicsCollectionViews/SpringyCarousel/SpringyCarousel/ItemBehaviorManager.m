@@ -81,7 +81,13 @@
     UIAttachmentBehavior *attachmentBehavior = self.attachmentBehaviors[indexPath];
     [self.animator removeBehavior:attachmentBehavior];
     
-    for (UICollectionViewLayoutAttributes *attr in [self.gravityBehavior.items copy]) {
+    for(UICollectionViewLayoutAttributes *attr in [self.gravityBehavior.items copy]) {
+        if([attr.indexPath isEqual:indexPath]) {
+            [self.gravityBehavior removeItem:attr];
+        }
+    }
+    
+    for (UICollectionViewLayoutAttributes *attr in [self.collisionBehavior.items copy]) {
         if ([attr.indexPath isEqual:indexPath]) {
             [self.collisionBehavior removeItem:attr];
         }
