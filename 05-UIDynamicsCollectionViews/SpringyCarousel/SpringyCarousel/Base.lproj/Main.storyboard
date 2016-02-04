@@ -59,6 +59,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rhH-P7-c6z">
                                 <rect key="frame" x="139" y="28" width="42" height="30"/>
                                 <state key="normal" title="+View"/>
+                                <connections>
+                                    <action selector="newViewButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5xe-wa-rHC"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

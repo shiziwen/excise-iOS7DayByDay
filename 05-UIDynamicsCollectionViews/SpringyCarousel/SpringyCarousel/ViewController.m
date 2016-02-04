@@ -33,6 +33,39 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)newViewButtonPressed:(id)sender {
+    NSNumber *newTitle = @([_collectionViewCellContent count]);
+    NSIndexPath *rightOfCenter = [self indexPathOfItemRightOfCenter];
+    [_collectionViewCellContent insertObject:newTitle atIndex:rightOfCenter.item];
+    [self.collectionView insertItemsAtIndexPaths:@[rightOfCenter]];
+}
+
+- (NSIndexPath *)indexPathOfItemRightOfCenter {
+    // Find all the cuttently visible items
+    NSArray *visibleItems = [self.collectionView indexPathsForVisibleItems];
+    
+    // Calculate the middle of the current collection view content
+    CGFloat midX = CGRectGetMidX(self.collectionView.bounds);
+    NSUInteger indexOfItem = 0;
+    CGFloat curMin = CGFLOAT_MAX;
+    
+    // Loop through the visible cells to find the left of center one
+    for (NSIndexPath *indexPath in visibleItems) {
+        UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
+        if (ABS(CGRectGetMidX(cell.frame) - midX) < ABS(curMin)) {
+            curMin = CGRectGetMidX(cell.frame) - midX;
+            indexOfItem = indexPath.item;
+        }
+    }
+    
+    if (curMin < 0) {
+        indexOfItem += 1;
+    }
+    
+    return [NSIndexPath indexPathForItem:indexOfItem inSection:0];
+    
+}
+
 - (void)prepareSpringCarousel {
     _collectionViewLayout = [[SpringyCarousel alloc] initWithItemSize:itemSize];
     self.collectionView.collectionViewLayout = _collectionViewLayout;
@@ -68,5 +101,6 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     return itemSize;
 }
+
 
 @end

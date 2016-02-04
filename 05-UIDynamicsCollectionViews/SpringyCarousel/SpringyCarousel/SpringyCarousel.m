@@ -76,4 +76,48 @@
     return [_dynamicAnimator layoutAttributesForCellAtIndexPath:indexPath];
 }
 
+# pragma mark - Item insert methods
+
+- (UICollectionViewLayoutAttributes *)initialLayoutAttributesForAppearingItemAtIndexPath:(NSIndexPath *)itemIndexPath {
+    return [_dynamicAnimator layoutAttributesForCellAtIndexPath:itemIndexPath];
+}
+
+- (void)prepareForCollectionViewUpdates:(NSArray<UICollectionViewUpdateItem *> *)updateItems {
+    for (UICollectionViewUpdateItem *updateItem in updateItems) {
+        if (updateItem.updateAction == UICollectionUpdateActionInsert) {
+            // Reset the springs of the exisiting items
+            [self resetItemSpringsForInsertAnIndexPath:updateItem.indexPathAfterUpdate];
+            
+            // where would the flow layout like to place the new cell?
+            UICollectionViewLayoutAttributes *attr = [super initialLayoutAttributesForAppearingItemAtIndexPath:updateItem.indexPathAfterUpdate];
+            CGPoint center = attr.center;
+            CGSize contentSize = [self collectionViewContentSize];
+            center.y -= contentSize.height - CGRectGetHeight(attr.bounds);
+            
+            // now reset the center of insertion point for animator
+            UICollectionViewLayoutAttributes *insertionPointAttr = [self layoutAttributesForItemAtIndexPath:updateItem.indexPathAfterUpdate];
+            insertionPointAttr.center = center;
+            [_dynamicAnimator updateItemUsingCurrentState:insertionPointAttr];
+        }
+    }
+}
+
+#pragma mark - Utility Methods
+
+- (void)resetItemSpringsForInsertAnIndexPath:(NSIndexPath *)indexPath {
+    NSArray *items = [_behaviorManager currentlyManagedItemIndexPaths];
+    NSEnumerator *fromEnumerator = [items reverseObjectEnumerator];
+    [fromEnumerator nextObject];
+    [items enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSIndexPath *toIndex = (NSIndexPath *)obj;
+        NSIndexPath *fromIndex = (NSIndexPath *)[fromEnumerator nextObject];
+        
+        if (fromIndex && fromIndex.item >= indexPath.item) {
+            UICollectionViewLayoutAttributes *toItem = [self layoutAttributesForItemAtIndexPath:toIndex];
+            UICollectionViewLayoutAttributes *fromItem = [self layoutAttributesForItemAtIndexPath:fromIndex];
+            toItem.center = fromItem.center;
+            [_dynamicAnimator updateItemUsingCurrentState:toItem];
+        }
+    }];
+}
 @end
