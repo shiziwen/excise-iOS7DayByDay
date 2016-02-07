@@ -29,11 +29,14 @@
                                     </button>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZrE-eR-teg">
                                         <rect key="frame" x="167" y="43" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="dimTintHandler:" destination="BYZ-38-t0r" eventType="valueChanged" id="rta-m2-JTm"/>
+                                        </connections>
                                     </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dim Tint?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tgz-cc-BRa">
                                         <rect key="frame" x="86" y="48" width="73" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -52,10 +55,17 @@
                                 <rect key="frame" x="137" y="380" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
                             </button>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cbj-Q2-IRi">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <items>
+                                    <barButtonItem title="Item" id="G0a-XH-PNi"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="dimTintSwitch" destination="ZrE-eR-teg" id="iju-Iz-HYH"/>
                         <outlet property="progressView" destination="2sw-3j-Nva" id="T88-ZT-UGR"/>
                     </connections>
                 </viewController>

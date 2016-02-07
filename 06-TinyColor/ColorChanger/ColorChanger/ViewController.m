@@ -17,6 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    self.view.tintAdjustmentMode = UIViewTintAdjustmentModeNormal;
+    self.dimTintSwitch.on = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,6 +39,15 @@
 - (void)updateProgressViewTint
 {
     self.progressView.progressTintColor = self.view.tintColor;
+}
+
+- (IBAction)dimTintHandler:(id)sender {
+    if (self.dimTintSwitch.isOn) {
+        self.view.tintAdjustmentMode = UIViewTintAdjustmentModeDimmed;
+    } else {
+        self.view.tintAdjustmentMode = UIViewTintAdjustmentModeNormal;
+    }
+    [self updateProgressViewTint];
 }
 
 @end
