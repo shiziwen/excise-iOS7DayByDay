@@ -61,6 +61,10 @@
                                     <barButtonItem title="Item" id="G0a-XH-PNi"/>
                                 </items>
                             </toolbar>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uzP-uy-FvK" customClass="SampleCustomControl">
+                                <rect key="frame" x="20" y="424" width="280" height="89"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>

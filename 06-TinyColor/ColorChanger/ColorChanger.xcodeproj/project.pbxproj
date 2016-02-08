@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		042309CE1C6899150089E423 /* SampleCustomControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 042309CD1C6899150089E423 /* SampleCustomControl.m */; };
 		043504031C6646BA00C7DA4F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 043504021C6646BA00C7DA4F /* main.m */; };
 		043504061C6646BA00C7DA4F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 043504051C6646BA00C7DA4F /* AppDelegate.m */; };
 		043504091C6646BA00C7DA4F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043504081C6646BA00C7DA4F /* ViewController.m */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		042309CC1C6899150089E423 /* SampleCustomControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleCustomControl.h; sourceTree = "<group>"; };
+		042309CD1C6899150089E423 /* SampleCustomControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleCustomControl.m; sourceTree = "<group>"; };
 		043503FE1C6646BA00C7DA4F /* ColorChanger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorChanger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		043504021C6646BA00C7DA4F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		043504041C6646BA00C7DA4F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -67,6 +70,8 @@
 				0435040F1C6646BA00C7DA4F /* LaunchScreen.storyboard */,
 				043504121C6646BA00C7DA4F /* Info.plist */,
 				043504011C6646BA00C7DA4F /* Supporting Files */,
+				042309CC1C6899150089E423 /* SampleCustomControl.h */,
+				042309CD1C6899150089E423 /* SampleCustomControl.m */,
 			);
 			path = ColorChanger;
 			sourceTree = "<group>";
@@ -151,6 +156,7 @@
 			files = (
 				043504091C6646BA00C7DA4F /* ViewController.m in Sources */,
 				043504061C6646BA00C7DA4F /* AppDelegate.m in Sources */,
+				042309CE1C6899150089E423 /* SampleCustomControl.m in Sources */,
 				043504031C6646BA00C7DA4F /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,6 +304,7 @@
 				043504171C6646BA00C7DA4F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
