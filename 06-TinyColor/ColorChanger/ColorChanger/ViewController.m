@@ -19,6 +19,15 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.view.tintAdjustmentMode = UIViewTintAdjustmentModeNormal;
     self.dimTintSwitch.on = NO;
+    
+    // Load the image
+    UIImage *shinobiHead = [UIImage imageNamed:@"shinobihead"];
+    //Set the rendering mode to respect tintcolor
+    shinobiHead = [shinobiHead imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    // Set to image view
+    self.tintedImageView.image = shinobiHead;
+    self.tintedImageView.contentMode = UIViewContentModeScaleAspectFill;
+    
 }
 
 - (void)didReceiveMemoryWarning {

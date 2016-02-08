@@ -13,5 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
 
 @property (weak, nonatomic) IBOutlet UISwitch *dimTintSwitch;
+@property (weak, nonatomic) IBOutlet UIImageView *tintedImageView;
+
 @end
 

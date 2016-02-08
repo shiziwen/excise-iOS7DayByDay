@@ -49,10 +49,10 @@
                                 <rect key="frame" x="20" y="300" width="280" height="2"/>
                             </progressView>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="afT-GJ-726">
-                                <rect key="frame" x="113" y="332" width="94" height="29"/>
+                                <rect key="frame" x="20" y="326" width="94" height="29"/>
                             </stepper>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NzE-2d-arm">
-                                <rect key="frame" x="137" y="380" width="46" height="30"/>
+                                <rect key="frame" x="44" y="374" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
                             </button>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cbj-Q2-IRi">
@@ -65,12 +65,16 @@
                                 <rect key="frame" x="20" y="424" width="280" height="89"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2sO-30-g51">
+                                <rect key="frame" x="146" y="310" width="137" height="106"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="dimTintSwitch" destination="ZrE-eR-teg" id="iju-Iz-HYH"/>
                         <outlet property="progressView" destination="2sw-3j-Nva" id="T88-ZT-UGR"/>
+                        <outlet property="tintedImageView" destination="2sO-30-g51" id="84P-dv-m0L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
